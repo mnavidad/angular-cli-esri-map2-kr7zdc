@@ -32,7 +32,7 @@ export class EsriMapComponent implements OnInit {
    */
   private _zoom: number = 5;
   private _center: Array<number> = [-97, 38];
-  private _portalItem: string;
+  private _portalItem: Object = "8e42e164d4174da09f61fe0d3f206641";
  // private _basemap: string = "gray";
 
   @Input()
@@ -54,11 +54,11 @@ export class EsriMapComponent implements OnInit {
   }
 
   // @Input()
-   set portalItem(portalItem: string) {
+   set portalItem(portalItem: Object) {
      this._portalItem = portalItem;
    }
 
-   get portalItem(): string {
+   get portalItem(): Object {
      return this._portalItem;
    }
 
@@ -85,11 +85,11 @@ export class EsriMapComponent implements OnInit {
         id:"8e42e164d4174da09f61fe0d3f206641"
       }) 
       // Set type of map
-     // const mapProperties: esri.MapProperties = {
-     //    portalItem: this._portalItem
-     // };
+      const mapProperties: esri.WebMapProperties = {
+         portalItem: this._portalItem
+      };
 
-      const map: esri.WebMap = new EsriMap(portalItem.id);
+      const map: esri.WebMap = new EsriMap(mapProperties);
 
       // Set type of map view
       const mapViewProperties: esri.MapViewProperties = {
