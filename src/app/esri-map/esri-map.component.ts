@@ -79,11 +79,11 @@ export class EsriMapComponent implements OnInit {
       const [EsriMap, EsriMapView, PortalItem] = await loadModules([
         'esri/WeMap',
         'esri/views/MapView',
-        'esri/portal/PortalItem'
+        //'esri/portal/PortalItem'
       ]);
-      const portalItem = new PortalItem({
-        id:"8e42e164d4174da09f61fe0d3f206641"
-      }) 
+      // const portalItem = new PortalItem({
+      //   id:"8e42e164d4174da09f61fe0d3f206641"
+      // }) 
       // Set type of map
       const mapProperties: esri.WebMapProperties = {
          portalItem: this._portalItem
