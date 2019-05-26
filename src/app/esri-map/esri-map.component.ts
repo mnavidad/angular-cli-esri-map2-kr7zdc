@@ -30,9 +30,10 @@ export class EsriMapComponent implements OnInit {
    * @private _center sets map center
    * @private _basemap sets type of map
    */
-  private _zoom: number = 10;
-  private _center: Array<number> = [0.1278, 51.5074];
-  private _basemap: string = 'streets';
+  private _zoom: number = 5;
+  private _center: Array<number> = [-97, 38];
+  private _portalItem: string;
+  private _basemap: string = "gray";
 
   @Input()
   set zoom(zoom: number) {
@@ -52,30 +53,33 @@ export class EsriMapComponent implements OnInit {
     return this._center;
   }
 
-  @Input()
-  set basemap(basemap: string) {
-    this._basemap = basemap;
-  }
+  // @Input()
+   set portalItem(portalItem: string) {
+     this._portalItem = portalItem;
+   }
 
-  get basemap(): string {
-    return this._basemap;
-  }
+   get portalItem(): string {
+     return this._portalItem;
+   }
 
   constructor() { }
 
   async initializeMap() {
     try {
-      const [EsriMap, EsriMapView] = await loadModules([
-        'esri/Map',
-        'esri/views/MapView'
+      const [EsriMap, EsriMapView, PortalItem] = await loadModules([
+        'esri/WeMap',
+        'esri/views/MapView',
+        'esri/portal/PortalItem'
       ]);
-
+      const portalItem = new PortalItem({
+        id:"8e42e164d4174da09f61fe0d3f206641"
+      }) 
       // Set type of map
-      const mapProperties: esri.MapProperties = {
-        basemap: this._basemap
-      };
+     // const mapProperties: esri.MapProperties = {
+     //    portalItem: this._portalItem
+     // };
 
-      const map: esri.Map = new EsriMap(mapProperties);
+      const map: esri.WebMap = new EsriMap(portalItem);
 
       // Set type of map view
       const mapViewProperties: esri.MapViewProperties = {
