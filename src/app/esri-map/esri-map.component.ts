@@ -31,9 +31,9 @@ export class EsriMapComponent implements OnInit {
    * @private _basemap sets type of map
    */
   private _zoom: number = 5;
-  private _center: Array<number> = [-97, 38];
+  private _center: Array<number> = [-122.6762071, 45.5234515];
   private _portalItem: Object = "8e42e164d4174da09f61fe0d3f206641";
- // private _basemap: string = "gray";
+  private _basemap: string = "gray";
 
   @Input()
   set zoom(zoom: number) {
@@ -62,21 +62,21 @@ export class EsriMapComponent implements OnInit {
      return this._portalItem;
    }
 
-   // @Input()
-  //  set basemap(basemap: string) {
-  //    this._basemap = basemap;
-  //  }
+   @Input()
+   set basemap(basemap: string) {
+     this._basemap = basemap;
+   }
 
-  //  get basemap(): string {
-  //    return this._basemap;
-  //  }
+   get basemap(): string {
+     return this._basemap;
+   }
 
 
   constructor() { }
 
   async initializeMap() {
     try {
-      const [EsriMap, EsriMapView, PortalItem] = await loadModules([
+      const [EsriMap, EsriMapView] = await loadModules([
         'esri/WeMap',
         'esri/views/MapView',
         //'esri/portal/PortalItem'

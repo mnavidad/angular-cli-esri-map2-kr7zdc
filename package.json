@@ -10,7 +10,7 @@
     "@angular/platform-browser": "7.2.13",
     "@angular/platform-browser-dynamic": "7.2.13",
     "@angular/router": "7.2.13",
-    "@types/arcgis-js-api": "4.11.0",
+    "@types/arcgis-js-api": "^4.11.0",
     "core-js": "^2.5.4",
     "esri-loader": "2.9.1",
     "rxjs": "6.4.0",
